@@ -7,7 +7,7 @@ services:
       - MYSQL_ROOT_PASSWORD=root1234
       - MYSQL_DATABASE=todo_app
     ports:
-      - 3309:3306
+      - 4045:4045
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s
@@ -16,9 +16,9 @@ services:
   api-app:
     build: .
     ports:
-      - 5050:5050
+      - 3312:3306
     environment:
-      - PORT=5050
+      - PORT=3306
       - DB_USERNAME=root
       - DB_PASSWORD=root1234
       - DB_NAME=todo_app

@@ -16,7 +16,7 @@ COPY . .
 
 CMD ["node", "index.js"]
 
-EXPOSE 5050
+EXPOSE 4045
 
 
 # Befehl zum erstellen des images
