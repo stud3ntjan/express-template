@@ -14,9 +14,13 @@ RUN npm install --only=production
 # Kopiren des lokalen codes in das Container image.
 COPY . .
 
+# Port Exponieren
+EXPOSE 4045
+
+# Startbefehl
 CMD ["node", "index.js"]
 
-EXPOSE 4045
+
 
 
 # Befehl zum erstellen des images
