@@ -7,7 +7,7 @@
     "test": "DOTENV_CONFIG_PATH=.test.env jest --coverage",
     "dev": "nodemon -r dotenv/config index.js ",
     "testrun": "nodemon -r dotenv/config index.js dotenv_config_path=.test.env ",
-    "lint": "eslint 'src/**/*.{ts,tsx}'",
+    "lint": "eslint 'src/**/*.{ts,tsx,js}'",
     "prettier": "prettier --check 'src/**/*.{ts,tsx}'"
   },
   "jest": {
