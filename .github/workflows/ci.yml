@@ -49,6 +49,12 @@ jobs:
             sleep 5
           done
 
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Run Prettier
+        run: npm run prettier
+
       - name: Run tests
         env:
           DB_HOST: 127.0.0.1
