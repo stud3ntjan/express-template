@@ -1,0 +1,68 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API Documentation",
+    "version": "1.0.0",
+    "description": "API Documentation using Swagger"
+  },
+  "paths": {
+    "/adddeviceinfo": {
+      "post": {
+        "summary": "Add new device information",
+        "tags": [
+          "DeviceInfo"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceInfo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The device information was successfully added"
+          },
+          "500": {
+            "description": "Some server error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DeviceInfo": {
+        "type": "object",
+        "required": [
+          "userId",
+          "baseOS",
+          "version"
+        ],
+        "properties": {
+          "userId": {
+            "type": "string",
+            "description": "The user ID"
+          },
+          "baseOS": {
+            "type": "string",
+            "description": "The base operating system"
+          },
+          "version": {
+            "type": "string",
+            "description": "The version of the device"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "DeviceInfo",
+      "description": "Device information management"
+    }
+  ]
+}
