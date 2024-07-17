@@ -9,9 +9,7 @@
     "/adddeviceinfo": {
       "post": {
         "summary": "Add new device information",
-        "tags": [
-          "DeviceInfo"
-        ],
+        "tags": ["DeviceInfo"],
         "requestBody": {
           "required": true,
           "content": {
@@ -31,17 +29,45 @@
           }
         }
       }
+    },
+    "/user/{userId}": {
+      "get": {
+        "summary": "Get a user by userId",
+        "tags": ["User"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The user ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The user information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
       "DeviceInfo": {
         "type": "object",
-        "required": [
-          "userId",
-          "baseOS",
-          "version"
-        ],
+        "required": ["userId", "baseOS", "version"],
         "properties": {
           "userId": {
             "type": "string",
@@ -56,6 +82,24 @@
             "description": "The version of the device"
           }
         }
+      },
+      "User": {
+        "type": "object",
+        "required": ["userId", "name", "email"],
+        "properties": {
+          "userId": {
+            "type": "string",
+            "description": "The user ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the user"
+          },
+          "email": {
+            "type": "string",
+            "description": "The email of the user"
+          }
+        }
       }
     }
   },
@@ -63,6 +107,10 @@
     {
       "name": "DeviceInfo",
       "description": "Device information management"
+    },
+    {
+      "name": "User",
+      "description": "User management"
     }
   ]
 }
