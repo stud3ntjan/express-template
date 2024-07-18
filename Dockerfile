@@ -1,38 +1,14 @@
-# Image definieren
+# neuestes node-image
 FROM node:latest
 
-# Erstellen eines Work directories
-WORKDIR /usr/src/app
+# umgebungsvariable mein name
+ENV NAME="Jan"
 
-# Kopieren von package.json und package-lock.json in docker app.
-COPY package*.json ./
+# inhalt kopieren
+COPY . /app
 
-# Installieren von NPM packages 
-# --> --only=production installiert nur dependencies und nicht die devDependencies.
-RUN npm install --only=production
+# arbeitsverzeichnis im container
+WORKDIR /app
 
-# Kopiren des lokalen codes in das Container image.
-COPY . .
-
-# Port Exponieren
-EXPOSE 4045
-
-# Startbefehl
-CMD ["node", "index.js"]
-
-
-
-
-# Befehl zum erstellen des images
-# docker build -t <name-des-images> <Pfad zum Verzeichnes, in dem die Dockerfile liegt>  
-# Bsp: docker build -t my-express-app .
-
-# Starten des docker 
-# docker run -p <Port auf Computer>:<Port der App in Docker> <name-des-images>
-# Bsp: docker run -p 3000:5050 my-express-app
-
-
-
-
-
-
+# echo befehl
+CMD ["sh", "-c", "echo Hallo $NAME! && npm install && npm start"]
